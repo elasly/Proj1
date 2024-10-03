@@ -1,0 +1,37 @@
+import React from 'react'
+import { Button } from "@/components/ui/button"
+import { Settings, Users, CreditCard, Database, Key } from 'lucide-react'
+
+interface NavProps {
+  sidebarOpen: boolean
+  setSidebarOpen: (open: boolean) => void
+}
+
+export function Nav({ sidebarOpen, setSidebarOpen }: NavProps) {
+  return (
+    <div className={`bg-gray-800 text-white w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:relative md:translate-x-0 transition duration-200 ease-in-out`}>
+      <nav>
+        <Button variant="ghost" className="flex items-center space-x-2 w-full justify-start" onClick={() => setSidebarOpen(false)}>
+          <Settings className="h-5 w-5" />
+          <span>Dashboard</span>
+        </Button>
+        <Button variant="ghost" className="flex items-center space-x-2 w-full justify-start">
+          <Users className="h-5 w-5" />
+          <span>Users</span>
+        </Button>
+        <Button variant="ghost" className="flex items-center space-x-2 w-full justify-start">
+          <CreditCard className="h-5 w-5" />
+          <span>Subscriptions</span>
+        </Button>
+        <Button variant="ghost" className="flex items-center space-x-2 w-full justify-start">
+          <Database className="h-5 w-5" />
+          <span>Database</span>
+        </Button>
+        <Button variant="ghost" className="flex items-center space-x-2 w-full justify-start">
+          <Key className="h-5 w-5" />
+          <span>API Keys</span>
+        </Button>
+      </nav>
+    </div>
+  )
+}
